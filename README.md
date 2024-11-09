@@ -1,32 +1,14 @@
-# A simple NodeJS Webapplication that allows yout to Post Tweets
-
-### Getting Started
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/SwitzerChees/m183-minitwitter
-   ```
-2. Install NPM packages
-   ```sh
-   yarn install
-   # or
-   npm install
-   ```
-3. Run the app
-   ```sh
-   yarn start
-   # or
-   npm start
-   ```
-4. Open the app in your browser
-   ```sh
-   http://localhost:3000
-   ```
-
-### Test Users
-
-| Username     | Password |
-| ------------ | -------- |
-| switzerchees | 123456   |
-| john         | 123456   |
-| jane         | 123456   |
+- [ ] **(0-1 Punkt)** Es wird anhand eines JWT-Tokens die Identität des Benutzers sichergestellt.
+- [ ] **(0-1 Punkt)** Endpunkte, welche den Datenzugriff erlauben, sind gegen den Zugriff von nicht identifizierten Benutzern geschützt.
+- [ ] **(0-1 Punkt)** Es können nur Posts im Namen der eigenen Identität erstellt werden.
+- [ ] **(0-1 Punkt)** Passwörter werden nicht im Klartext, sondern als Hash in der Datenbank gespeichert.
+- [ ] **(0-1 Punkt)** Posts werden in der Datenbank verschlüsselt gespeichert.
+- [ ] **(0-1 Punkt)** Posts werden bei der Abfrage entschlüsselt und unverschlüsselt an den Client übertragen, sodass dieser die Posts in Klartext einsehen kann.
+- [ ] **(0-1 Punkt)** Die Eingaben der Benutzer werden «Escaped», sodass kein unerlaubtes HTML oder auch JS an andere Benutzer ausgeliefert wird.
+- [ ] **(0-1 Punkt)** Die Abfragelogik und die Queries, welche auf der Datenbank ausgeführt werden, werden auf der Serverseite und nicht vom Client ausgeführt.
+- [ ] **(0-1 Punkt)** Der Server gibt in seinen Antworten nicht mehr preis, welches Framework im Backend eingesetzt wird.
+- [ ] **(0-1 Punkt)** Der Server wird durch Rate Limiting vor Brute-Force-Angriffen geschützt.
+- [ ] **(0-1 Punkt)** Auf dem Server wird ein Log geführt, welcher Benutzer wann welchen Request auf dem Server ausgeführt hat. Dies gilt auch für Anmeldeversuche.
+- [ ] **(0-1 Punkt)** Der Server hat allgemein ein besseres Error-Handling, sodass es bei unerwarteten Fehlern nicht zu einem Komplettabsturz der Applikation kommt.
+- [ ] **(0-1 Punkt)** Jede einzelne Behebung eines Sicherheitsproblems wird in einem separaten Commit behandelt, und dieser ist in der Historie erkennbar, indem z. B. die jeweilige OWASP-Einteilung als Kommentar verwendet wird.
+- [ ] **(0-1 Punkt)** Der Code ist sauber strukturiert, folgt den gängigen JavaScript-Code-Richtlinien und hat eine konsistente Formatierung.
