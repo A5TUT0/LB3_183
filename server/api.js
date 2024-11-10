@@ -1,12 +1,6 @@
-const req = require("express/lib/request");
 const { initializeDatabase, queryDB, insertDB } = require("./database");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+
 let db;
-const secretKey = process.env.SECRET_KEY;
-const generateAccessToken = (user) => {
-  return jwt.sign(user, secretKey, { expiresIn: "1d" });
-};
 
 const initializeAPI = async (app) => {
   db = await initializeDatabase();
@@ -31,9 +25,7 @@ const login = async (req, res) => {
   const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
   const user = await queryDB(db, query);
   if (user.length === 1) {
-    const token = generateAccessToken({ username: req.body.username });
-    console.log(token);
-    res.json(token);
+    res.json(user[0]);
   } else {
     res.json(null);
   }
