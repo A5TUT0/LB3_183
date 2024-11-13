@@ -24,8 +24,8 @@
 
 ## **4. Sicherheit von Abfragen und Backend**
 
-- [ ] **(0-1 Punkt)** Die Abfragelogik und die Queries, welche auf der Datenbank ausgeführt werden, werden auf der Serverseite und nicht vom Client ausgeführt.
-- [ ] **(0-1 Punkt)** Der Server gibt in seinen Antworten nicht mehr preis, welches Framework im Backend eingesetzt wird.
+- [x] **(0-1 Punkt)** Die Abfragelogik und die Queries, welche auf der Datenbank ausgeführt werden, werden auf der Serverseite und nicht vom Client ausgeführt.
+- [x] **(0-1 Punkt)** Der Server gibt in seinen Antworten nicht mehr preis, welches Framework im Backend eingesetzt wird.
 
 ---
 

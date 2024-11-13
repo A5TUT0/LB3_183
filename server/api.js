@@ -43,8 +43,7 @@ const initializeAPI = async (app) => {
 };
 
 const getFeed = async (req, res) => {
-  const query = req.query.q;
-  const tweets = await queryDB(db, query);
+  const tweets = await queryDB(db, "SELECT * FROM tweets ORDER BY id DESC");
   const decryptedTweets = tweets.map((tweet) => ({
     ...tweet,
     text: decrypt(tweet.text),
@@ -52,18 +51,16 @@ const getFeed = async (req, res) => {
   res.json(decryptedTweets);
 };
 
-const postTweet = (req, res) => {
-  console.log(req.body);
-  const { query, text } = req.body;
-  if (!query || !text) {
-    return res.status(400).json({ error: "You need to text" });
-  }
+const postTweet = async (req, res) => {
+  const { text } = req.body;
   const encryptedText = encrypt(text);
-  const modifiedQuery = query.replace(`'${text}'`, `'${encryptedText}'`);
-  console.log(encryptedText);
-  console.log(modifiedQuery);
+  const timestamp = new Date().toISOString();
+  const username = req.user.username; // Extraído del token.
 
-  insertDB(db, modifiedQuery);
+  await insertDB(
+    db,
+    `INSERT INTO tweets (username, timestamp, text) VALUES ('${username}', '${timestamp}', '${encryptedText}')`
+  );
   res.json({ status: "ok" });
 };
 

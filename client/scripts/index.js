@@ -44,11 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const getFeed = async () => {
-    const query = "SELECT * FROM tweets ORDER BY id DESC";
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user?.token;
 
-    const response = await fetch(`/api/feed?q=${query}`, {
+    const response = await fetch("/api/feed", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -60,9 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const postTweet = async () => {
     const { token } = JSON.parse(localStorage.getItem("user"));
-    const timestamp = new Date().toISOString();
-    const text = escapeHTML(newTweetInput.value.trim());
-    const query = `INSERT INTO tweets (username, timestamp, text) VALUES ('${user.username}', '${timestamp}', '${text}')`;
+    const text = newTweetInput.value.trim();
 
     await fetch("/api/feed", {
       method: "POST",
@@ -70,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ query, text }),
+      body: JSON.stringify({ text }),
     });
 
     await getFeed();
