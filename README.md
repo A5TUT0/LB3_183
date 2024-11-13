@@ -3,8 +3,8 @@
 ## **1. Authentifizierung und Zugriffskontrolle**
 
 - [x] **(0-1 Punkt)** Es wird anhand eines JWT-Tokens die Identität des Benutzers sichergestellt.
-- [ ] **(0-1 Punkt)** Endpunkte, welche den Datenzugriff erlauben, sind gegen den Zugriff von nicht identifizierten Benutzern geschützt.
-- [ ] **(0-1 Punkt)** Es können nur Posts im Namen der eigenen Identität erstellt werden.
+- [x] **(0-1 Punkt)** Endpunkte, welche den Datenzugriff erlauben, sind gegen den Zugriff von nicht identifizierten Benutzern geschützt.
+- [x] **(0-1 Punkt)** Es können nur Posts im Namen der eigenen Identität erstellt werden.
 
 ---
 

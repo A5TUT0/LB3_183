@@ -35,24 +35,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getFeed = async () => {
     const query = "SELECT * FROM tweets ORDER BY id DESC";
-    const response = await fetch(`/api/feed?q=${query}`);
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = user?.token;
+
+    const response = await fetch(`/api/feed?q=${query}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const tweets = await response.json();
     const tweetsHTML = tweets.map(generateTweet).join("");
     document.getElementById("feed").innerHTML = tweetsHTML;
   };
 
   const postTweet = async () => {
-    const username = user.username;
+    const { token } = JSON.parse(localStorage.getItem("user"));
     const timestamp = new Date().toISOString();
     const text = newTweetInput.value;
-    const query = `INSERT INTO tweets (username, timestamp, text) VALUES ('${username}', '${timestamp}', '${text}')`;
+    const query = `INSERT INTO tweets (username, timestamp, text) VALUES ('${user.username}', '${timestamp}', '${text}')`;
+
     await fetch("/api/feed", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ query }),
     });
+
     await getFeed();
     newTweetInput.value = "";
   };
