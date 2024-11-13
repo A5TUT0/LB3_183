@@ -1,4 +1,4 @@
-const sqlite3 = require("sqlite3").verbose();
+const sqlite3 = require('sqlite3').verbose();
 
 const tweetsTableExists =
   "SELECT name FROM sqlite_master WHERE type='table' AND name='tweets'";
@@ -22,7 +22,7 @@ const seedUsersTable = `INSERT INTO users (username, password) VALUES
 `;
 
 const initializeDatabase = async () => {
-  const db = new sqlite3.Database("./minitwitter.db");
+  const db = new sqlite3.Database('./minitwitter.db');
 
   db.serialize(() => {
     db.get(tweetsTableExists, [], async (err, row) => {

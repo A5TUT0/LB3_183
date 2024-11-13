@@ -49,5 +49,5 @@
 
 ## **8. Entwicklungsbest Practices**
 
-- [ ] **(0-1 Punkt)** Jede einzelne Behebung eines Sicherheitsproblems wird in einem separaten Commit behandelt, und dieser ist in der Historie erkennbar, indem z. B. die jeweilige OWASP-Einteilung als Kommentar verwendet wird.
-- [ ] **(0-1 Punkt)** Der Code ist sauber strukturiert, folgt den gängigen JavaScript-Code-Richtlinien und hat eine konsistente Formatierung.
+- [x] **(0-1 Punkt)** Jede einzelne Behebung eines Sicherheitsproblems wird in einem separaten Commit behandelt, und dieser ist in der Historie erkennbar, indem z. B. die jeweilige OWASP-Einteilung als Kommentar verwendet wird.
+- [x] **(0-1 Punkt)** Der Code ist sauber strukturiert, folgt den gängigen JavaScript-Code-Richtlinien und hat eine konsistente Formatierung.
