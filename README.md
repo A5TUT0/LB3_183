@@ -37,7 +37,7 @@
 
 ## **6. Protokollierung und Überwachung**
 
-- [ ] **(0-1 Punkt)** Auf dem Server wird ein Log geführt, welcher Benutzer wann welchen Request auf dem Server ausgeführt hat. Dies gilt auch für Anmeldeversuche.
+- [x] **(0-1 Punkt)** Auf dem Server wird ein Log geführt, welcher Benutzer wann welchen Request auf dem Server ausgeführt hat. Dies gilt auch für Anmeldeversuche.
 
 ---
 
