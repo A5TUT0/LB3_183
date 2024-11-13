@@ -10,9 +10,9 @@
 
 ## **2. Datensicherheit**
 
-- [ ] **(0-1 Punkt)** Passwörter werden nicht im Klartext, sondern als Hash in der Datenbank gespeichert.
-- [ ] **(0-1 Punkt)** Posts werden in der Datenbank verschlüsselt gespeichert.
-- [ ] **(0-1 Punkt)** Posts werden bei der Abfrage entschlüsselt und unverschlüsselt an den Client übertragen, sodass dieser die Posts in Klartext einsehen kann.
+- [x] **(0-1 Punkt)** Passwörter werden nicht im Klartext, sondern als Hash in der Datenbank gespeichert.
+- [x] **(0-1 Punkt)** Posts werden in der Datenbank verschlüsselt gespeichert.
+- [x] **(0-1 Punkt)** Posts werden bei der Abfrage entschlüsselt und unverschlüsselt an den Client übertragen, sodass dieser die Posts in Klartext einsehen kann.
 
 ---
 

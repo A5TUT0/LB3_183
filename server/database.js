@@ -16,9 +16,9 @@ const createUsersTable = `CREATE TABLE users (
   password TEXT
 )`;
 const seedUsersTable = `INSERT INTO users (username, password) VALUES
-  ('switzerchees', '123456'),
-  ('john', '123456'),
-  ('jane', '123456')
+  ('switzerchees', '$2b$10$XYhyqZiH/Df2ok8mm4c1FuATAXDu/EpR2BWc2znKYP406baW0sZFK'),
+  ('john', '$2b$10$XYhyqZiH/Df2ok8mm4c1FuATAXDu/EpR2BWc2znKYP406baW0sZFK'),
+  ('jane', '$2b$10$XYhyqZiH/Df2ok8mm4c1FuATAXDu/EpR2BWc2znKYP406baW0sZFK')
 `;
 
 const initializeDatabase = async () => {

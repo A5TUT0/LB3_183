@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const postTweet = async () => {
     const { token } = JSON.parse(localStorage.getItem("user"));
     const timestamp = new Date().toISOString();
-    const text = newTweetInput.value;
+    const text = newTweetInput.value.trim();
     const query = `INSERT INTO tweets (username, timestamp, text) VALUES ('${user.username}', '${timestamp}', '${text}')`;
 
     await fetch("/api/feed", {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query, text }),
     });
 
     await getFeed();
@@ -80,4 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   getFeed();
+  newTweetInput.value = "";
 });
