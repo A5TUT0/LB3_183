@@ -10,17 +10,17 @@ const key = Buffer.from(process.env.KEY, "utf8");
 const iv = Buffer.from(process.env.IV, "utf8");
 let db;
 const secretKey = process.env.SECRET_KEY;
+const loginLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 5,
+  message: { error: "TOOOOOOO MANY LOGIN -_- are you a black hat?" },
+});
 const autheticateToken = (req, res, next) => {
   // console.log(req);
   const token = req.headers["authorization"];
   if (!token || !token.startsWith("Bearer ")) {
     return res.status(401).json({ error: "ERROR, INVALID TOKEN -_-" });
   }
-  const loginLimiter = rateLimit({
-    windowMs: 1 * 60 * 1000,
-    max: 5,
-    message: { error: "TOOOOOOO MANY LOGIN -_- are you a black hat?" },
-  });
   jwt.verify(token.split(" ")[1], secretKey, (err, user) => {
     if (err)
       return res.status(403).json({ error: "ERRRRRORRR, INVALID TOKEN :(" });
