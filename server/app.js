@@ -17,6 +17,19 @@ app.use(express.json());
 const server = http.createServer(app);
 app.use(logRequests);
 
+app.use((err, req, res, next) => {
+  console.error(`💥[SERVER ERROR]: ${err.message}`);
+  res.status(err.status || 500).json({
+    error: "ERRRORRRR ಥ_ಥ",
+  });
+});
+process.on("uncaughtException", (err) => {
+  console.error(`⛔[FATAL ERROR]: ${err.message}`);
+  process.exit(1);
+});
+process.on("unhandledRejection", (reason) => {
+  console.error(`😐[PROMISE REJECTED]: ${reason}`);
+});
 // deliver static files from the client folder like css, js, images
 app.use(express.static("client"));
 // route for the homepage

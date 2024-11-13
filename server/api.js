@@ -15,6 +15,9 @@ const loginLimiter = rateLimit({
   max: 5,
   message: { error: "TOOOOOOO MANY LOGIN -_- are you a black hat?" },
 });
+const asyncHandler = (fn) => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
 const autheticateToken = (req, res, next) => {
   // console.log(req);
   const token = req.headers["authorization"];
@@ -42,9 +45,9 @@ const decrypt = (encryptedText) => {
 };
 const initializeAPI = async (app) => {
   db = await initializeDatabase();
-  app.get("/api/feed", autheticateToken, getFeed);
-  app.post("/api/feed", autheticateToken, postTweet);
-  app.post("/api/login", loginLimiter, login);
+  app.get("/api/feed", autheticateToken, asyncHandler(getFeed));
+  app.post("/api/feed", autheticateToken, asyncHandler(postTweet));
+  app.post("/api/login", loginLimiter, asyncHandler(login));
 };
 
 const getFeed = async (req, res) => {

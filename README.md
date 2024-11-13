@@ -43,7 +43,7 @@
 
 ## **7. Fehlerbehandlung**
 
-- [ ] **(0-1 Punkt)** Der Server hat allgemein ein besseres Error-Handling, sodass es bei unerwarteten Fehlern nicht zu einem Komplettabsturz der Applikation kommt.
+- [x] **(0-1 Punkt)** Der Server hat allgemein ein besseres Error-Handling, sodass es bei unerwarteten Fehlern nicht zu einem Komplettabsturz der Applikation kommt.
 
 ---
 
