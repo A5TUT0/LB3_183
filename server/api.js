@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 require("dotenv").config();
+const rateLimit = require("express-rate-limit");
 
 const key = Buffer.from(process.env.KEY, "utf8");
 const iv = Buffer.from(process.env.IV, "utf8");
@@ -15,7 +16,11 @@ const autheticateToken = (req, res, next) => {
   if (!token || !token.startsWith("Bearer ")) {
     return res.status(401).json({ error: "ERROR, INVALID TOKEN -_-" });
   }
-
+  const loginLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 5,
+    message: { error: "TOOOOOOO MANY LOGIN -_- are you a black hat?" },
+  });
   jwt.verify(token.split(" ")[1], secretKey, (err, user) => {
     if (err)
       return res.status(403).json({ error: "ERRRRRORRR, INVALID TOKEN :(" });
@@ -39,7 +44,7 @@ const initializeAPI = async (app) => {
   db = await initializeDatabase();
   app.get("/api/feed", autheticateToken, getFeed);
   app.post("/api/feed", autheticateToken, postTweet);
-  app.post("/api/login", login);
+  app.post("/api/login", loginLimiter, login);
 };
 
 const getFeed = async (req, res) => {

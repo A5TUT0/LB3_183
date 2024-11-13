@@ -31,7 +31,7 @@
 
 ## **5. Schutz vor Angriffen**
 
-- [ ] **(0-1 Punkt)** Der Server wird durch Rate Limiting vor Brute-Force-Angriffen geschützt.
+- [x] **(0-1 Punkt)** Der Server wird durch Rate Limiting vor Brute-Force-Angriffen geschützt.
 
 ---
 
