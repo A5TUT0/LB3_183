@@ -18,7 +18,7 @@
 
 ## **3. Validierung und Sanitierung**
 
-- [ ] **(0-1 Punkt)** Die Eingaben der Benutzer werden «Escaped», sodass kein unerlaubtes HTML oder auch JS an andere Benutzer ausgeliefert wird.
+- [x] **(0-1 Punkt)** Die Eingaben der Benutzer werden «Escaped», sodass kein unerlaubtes HTML oder auch JS an andere Benutzer ausgeliefert wird.
 
 ---
 

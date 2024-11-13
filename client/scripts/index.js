@@ -7,7 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!user) {
     window.location.href = "/login.html";
   }
-
+  const escapeHTML = (str) =>
+    str.replace(/[&<>"']/g, (match) => {
+      const escapeMap = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;",
+      };
+      return escapeMap[match];
+    });
   const generateTweet = (tweet) => {
     const date = new Date(tweet.timestamp).toLocaleDateString("de-CH", {
       hour: "numeric",
@@ -21,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="flex flex-col grow">
                 <div class="flex flex-col gap-2">
                     <div class="flex justify-between text-gray-200">
-                    <h3 class="font-semibold">${tweet.username}</h3>
+                    <h3 class="font-semibold">${escapeHTML(tweet.username)}</h3>
                     <p class="text-sm">${date}</p>
                     </div>
                 </div>
@@ -51,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const postTweet = async () => {
     const { token } = JSON.parse(localStorage.getItem("user"));
     const timestamp = new Date().toISOString();
-    const text = newTweetInput.value.trim();
+    const text = escapeHTML(newTweetInput.value.trim());
     const query = `INSERT INTO tweets (username, timestamp, text) VALUES ('${user.username}', '${timestamp}', '${text}')`;
 
     await fetch("/api/feed", {
